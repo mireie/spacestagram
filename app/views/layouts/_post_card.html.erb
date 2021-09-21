@@ -1,7 +1,9 @@
 <div class="col-sm-4">
   <div class="card m-1">
     <div class="card-body">
-      <h5 class="card-title"><%= link_to post.fetch('title'), "/" %></h5>
+      <img class="card-img-top" alt="Image of <%=post.fetch('title')%>" src="<%=post.fetch('url')%>"/>
+      <h5 class="card-title"><%= post.fetch('title') %></h5>
+      <p class="card-text"><%= post.fetch('explanation') %></p>
     </div>
   </div>
 </div>
