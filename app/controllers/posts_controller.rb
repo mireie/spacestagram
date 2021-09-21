@@ -2,7 +2,7 @@ class PostsController < ApplicationController
   require 'post'
   
   def index
-    response = Apod.get_posts()
+    response = Apod.get_posts(3)
     # need to get only media type images
     @posts = response
     render :index
