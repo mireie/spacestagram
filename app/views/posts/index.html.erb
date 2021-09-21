@@ -2,7 +2,6 @@
   <div class="col main-content">
     <% if @posts.any? %>
       <div class="row">
-      <h2>Posts from Space!</h2>
         <% @posts.each do |post| %>
           <%= render :partial => "layouts/post_card", :locals => {:post => post} %>
         <% end %>

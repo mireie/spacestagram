@@ -1,9 +1,10 @@
 <div class="col-lg-4">
   <div class="card m-1">
     <div class="card-body">
-      <img class="card-img-top" alt="Image of <%=post.fetch('title')%>" src="<%=post.fetch('url')%>"/>
-      <h5 class="card-title"><%= post.fetch('title') %></h5>
-      <p class="card-text"><%= post.fetch('explanation') %></p>
+      <img class="card-img-top" alt="Image of <%=post.title%>" src="<%=post.image%>"/>
+      <h5 class="card-title"><%= post.title %></h5>
+      <p><%= button_to 'Like', post_likes_path(post), method: :post %> | <%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%> </p>
+      <p class="card-text"><%= post.description %></p>
     </div>
   </div>
 </div>
