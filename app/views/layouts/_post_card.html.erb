@@ -3,8 +3,28 @@
     <div class="card-body">
       <img class="card-img-top" alt="Image of <%=post.title%>" src="<%=post.image%>"/>
       <h5 class="card-title"><%=link_to post.title, post_path(post) %></h5>
-      <p><%= button_to 'Like', post_likes_path(post), method: :post %> | <%= pluralize(post.likes.count, 'Like')%> </p>
-      <p class="card-text"><%= truncate(post.description, length: 200, separator: ' ')%> <br> <%= link_to "Read More", post_path(post)%></p>
+      <div class="row">
+        <div class="col-4">
+          <%= post.date%>
+        </div>
+        <div class="col text-end">
+          <em><%= post.copyright? ? "© #{post.copyright}" : "" %></em>
+        </div>
+      </div>
+      <p>
+        <% if current_user %>
+          <%if post.likes.where(user_id: current_user.id).exists?%>
+            <%= link_to 'Unlike', post_likes_path(post), method: :post %>
+          <%else%>
+            <%= link_to 'Like', post_likes_path(post), method: :post %>
+          <%end%>
+        <%else%>
+          <small><%=link_to 'Log in', '/users/sign_in' %> to like photos!</small>
+        <% end %>
+        <%= pluralize(post.likes.count, 'Like')%>
+      </p>
+      <p class="card-text"><%= truncate(post.description, length: 200, separator: ' ')%> <br>
+        <%= link_to "Read More", post_path(post)%></p>
     </div>
   </div>
 </div>

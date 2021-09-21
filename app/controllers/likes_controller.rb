@@ -3,7 +3,9 @@ class LikesController < ApplicationController
 
   def create
     if liked?
-      flash[:notice] = "You can't like more than once"
+      like = Like.where(user_id: current_user.id, post_id:params[:post_id]).first
+      like.destroy
+      flash[:notice] = "Like Removed"
     else
       flash[:notice] = "Post Liked!"
       @post.likes.create(user_id: current_user.id)
@@ -11,6 +13,9 @@ class LikesController < ApplicationController
     redirect_to "/"
   end
 
+  def destroy
+    @like.destroy
+  end
   private
   
   def find_post
@@ -18,7 +23,6 @@ class LikesController < ApplicationController
   end
 
   def liked?
-    Like.where(user_id: current_user.id, post_id:
-    params[:post_id]).exists?
+    Like.where(user_id: current_user.id, post_id:params[:post_id]).exists?
   end
 end

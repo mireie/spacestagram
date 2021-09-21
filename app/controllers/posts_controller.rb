@@ -17,7 +17,12 @@ class PostsController < ApplicationController
   def create_posts
     response = Apod.get_posts(3)
     response.each do |post|
-      Post.create(title: post.fetch("title"), image: post.fetch("url"), description: post.fetch("explanation"))
+      if post.key?("copyright")
+        copyright = post.fetch("copyright")
+      else
+        copyright = ""
+      end
+      Post.create(title: post.fetch("title"), image: post.fetch("url"), description: post.fetch("explanation"), copyright: copyright, date: post.fetch("date"))
     end
   end
 end
