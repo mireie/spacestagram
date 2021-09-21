@@ -8,11 +8,12 @@
 
 1. Ruby v2.6.6
 2. Rails v6.1.4
-3. Heroku
-4. Devise
-5. Bootstrap
-6. dotenv
-7. httpparty
+3. [NASA APOD](https://github.com/nasa/apod-api)
+4. Heroku
+5. Devise
+6. Bootstrap
+7. dotenv
+8. httpparty
 
 ## Description
 
