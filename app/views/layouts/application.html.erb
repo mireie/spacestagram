@@ -10,13 +10,10 @@
   </head>
   <body>
     <div class="container">
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <nav class="navbar navbar-light bg-light">
         <div class="container-fluid">
           <a class="navbar-brand" href="/">Spacestagram!</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <div class="" id="navbarNavDropdown">
             <div id="user-info">
               <% if current_user %>
                 <%= link_to current_user.email, edit_user_registration_url %> | <%= link_to "Sign out", '/users/sign_out', :method => :delete %>
