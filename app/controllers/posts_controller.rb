@@ -2,9 +2,8 @@ class PostsController < ApplicationController
   require 'post'
   
   def index
-    @response = Apod.get_posts()
-    @posts = @response.sort_by! {|hsh| hsh.fetch("name")}
-    @posts_top_five = Post.get_posts('posts/top_five').sort_by! {|hsh| hsh.fetch("name")}
+    response = Apod.get_posts()
+    @posts = response
     render :index
   end
 
