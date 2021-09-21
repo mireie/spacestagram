@@ -1,13 +1,22 @@
 <div class="row mt-3">
-  <div class="col main-content">
-    <% if @posts.any? %>
+  <div class="col">
+    <% if @posts %>
       <div class="row">
         <% @posts.each do |post| %>
           <%= render :partial => "layouts/post_card", :locals => {:post => post} %>
         <% end %>
       </div>
+      <div class="row">
+        <div class="col text-center">
+          <%if @posts.count < 60 %>
+            <%= button_to 'Load More Posts', create_posts_posts_path, class: "btn btn-primary mb-3"%>
+          <%else%>
+            <p class="post-container p-3 my-3">Posts are currently limited to respect NASA's API!</p>
+          <%end%>
+        </div>
+      </div>
     <% else %>
-      <p>There are no posts yet.</p>
+      <p class="post-container p-3 my-3">There are no posts yet.</p>
     <% end %>
   </div>
 </div>

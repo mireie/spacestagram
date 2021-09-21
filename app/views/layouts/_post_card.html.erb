@@ -14,9 +14,9 @@
       <p>
         <% if current_user %>
           <%if post.likes.where(user_id: current_user.id).exists?%>
-            <%= link_to 'Unlike', post_likes_path(post), method: :post %>
+            <%= link_to 'Unlike', post_likes_path(post), method: :post, class: 'btn btn-warning' %>
           <%else%>
-            <%= link_to 'Like', post_likes_path(post), method: :post %>
+            <%= link_to 'Like', post_likes_path(post), method: :post, class: 'btn btn-primary' %>
           <%end%>
         <%else%>
           <small><%=link_to 'Log in', '/users/sign_in' %> to like photos!</small>
