@@ -1,0 +1,28 @@
+<div class="row mt-3">
+  <div class="col-md-3 sidebar">
+    <% if @posts_top_five.any? %>
+    <div class="row">
+    <div class="col">
+  <h2>Top Five Burgers</h2>
+      <ul>
+        <% @posts_top_five.each do |post| %>
+          <li><%=link_to post.fetch('name'), post_path(post.fetch('id'))%></li>
+        <% end %>
+      </ul>
+      </div>
+    </div>
+    <% end %>
+    </div>
+  <div class="col main-content">
+    <% if @posts.any? %>
+      <div class="row">
+      <h2>Available Burgers</h2>
+        <% @posts.each do |post| %>
+          <%= render :partial => "layouts/post_card", :locals => {:post => post} %>
+        <% end %>
+      </div>
+    <% else %>
+      <p>There are no posts yet.</p>
+    <% end %>
+  </div>
+</div>
